@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import Snipper from '../components/snipper';
+import Snipper from '../components/Snipper';
+
 
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 

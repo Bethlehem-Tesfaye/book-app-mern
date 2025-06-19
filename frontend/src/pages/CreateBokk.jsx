@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import Snipper from "../components/snipper";
+import Snipper from '../components/Snipper';
 
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 

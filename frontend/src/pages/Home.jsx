@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import { MdOutlineAddBox, MdOutlineDelete } from "react-icons/md";
 import { BsInfoCircle } from "react-icons/bs";
 import { AiOutlineEdit } from "react-icons/ai";
-import Snipper from "../components/snipper";
+import Snipper from '../components/Snipper';
+
 
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 

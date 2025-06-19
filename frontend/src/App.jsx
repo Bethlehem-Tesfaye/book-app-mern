@@ -5,7 +5,6 @@ import CreateBokk from './pages/CreateBokk'
 import DeleteBook from './pages/DeleteBook'
 import EditBook from './pages/EditBook'
 import ShowBook from './pages/ShowBook'
-import Snipper from './components/snipper'
 import './App.css'
 
 

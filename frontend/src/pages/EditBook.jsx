@@ -3,24 +3,28 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import Snipper from '../components/snipper';
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 const EditBook = () => {
   const [editBook, setEditBook] = useState({ title: "", author: "", publishYear: "" });
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5555/books/${id}`).then((res) => {
-      setEditBook(res.data)
-    }).catch((error) => {
-      console.log(error);
-    })
+    axios.get(`${backendURL}/books/${id}`)
+      .then((res) => {
+        setEditBook(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }, [id]);
 
   const handleEdit = async (e) => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.put(`http://localhost:5555/books/edit/${id}`, editBook);
+      await axios.put(`${backendURL}/books/edit/${id}`, editBook);
       setLoading(false);
     } catch (error) {
       console.log(error);

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import Snipper from "../components/snipper";
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 const CreateBokk = () => {
   const [newBook, setNewBook] = useState({
     title: "",
@@ -16,7 +18,7 @@ const CreateBokk = () => {
     setLoading(true);
 
     try {
-      await axios.post("http://localhost:5555/books", newBook);
+      await axios.post(`${backendURL}/books`, newBook);
       setLoading(false);
       setMessage("Book successfully created!");
       setNewBook({ title: "", author: "", publishYear: "" });

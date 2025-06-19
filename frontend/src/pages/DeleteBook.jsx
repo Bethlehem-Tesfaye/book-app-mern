@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Snipper from '../components/snipper';
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 const DeleteBook = () => {
   const [deleteBook, setDeleteBook] = useState({ title: "", author: "", publishYear: "" });
   const [loading, setLoading] = useState(false);
@@ -10,7 +12,7 @@ const DeleteBook = () => {
   const { id } = useParams();
 
   useEffect(() => {
-    axios.get(`http://localhost:5555/books/${id}`)
+    axios.get(`${backendURL}/books/${id}`)
       .then((res) => {
         setDeleteBook(res.data);
       })
@@ -21,7 +23,7 @@ const DeleteBook = () => {
 
   const handleDelete = () => {
     setLoading(true);
-    axios.delete(`http://localhost:5555/books/delete/${id}`)
+    axios.delete(`${backendURL}/books/delete/${id}`)
       .then(() => {
         console.log('Book deleted successfully');
         setLoading(false);

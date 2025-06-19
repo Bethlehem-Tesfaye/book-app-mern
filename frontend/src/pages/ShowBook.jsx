@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import BackButton from "../components/BackButton";
 import Snipper from "../components/snipper";
 
+const backendURL = import.meta.env.VITE_BACKEND_URL;
+
 const ShowBook = () => {
   const [book, setBook] = useState({});
   const [loading, setLoading] = useState(false);
@@ -12,7 +14,7 @@ const ShowBook = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get(`http://localhost:5555/books/${id}`)
+      .get(`${backendURL}/books/${id}`)
       .then((response) => {
         setBook(response.data);
         setLoading(false);
@@ -21,11 +23,12 @@ const ShowBook = () => {
         console.log(error);
         setLoading(false);
       });
-  }, []);
+  }, [id]);
+
   return (
     <div className="p-4">
       <BackButton />
-      <h1 className="text-3xl my-4">Show BOkk</h1>
+      <h1 className="text-3xl my-4">Show Book</h1>
       {loading ? (
         <Snipper />
       ) : (
@@ -39,11 +42,11 @@ const ShowBook = () => {
             <span>{book.title}</span>
           </div>
           <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">author</span>
+            <span className="text-xl mr-4 text-gray-500">Author</span>
             <span>{book.author}</span>
           </div>
           <div className="my-4">
-            <span className="text-xl mr-4 text-gray-500">publishYear</span>
+            <span className="text-xl mr-4 text-gray-500">Publish Year</span>
             <span>{book.publishYear}</span>
           </div>
         </div>

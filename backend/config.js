@@ -1,5 +1,5 @@
-export const PORT = 5555;
+import dotenv from 'dotenv';
+dotenv.config();
 
-export const mongoDBURL = 'mongodb://bethlehemtesfaye15:<db_password>@book-store-shard-00-00.gmuzy.mongodb.net:27017,book-store-shard-00-01.gmuzy.mongodb.net:27017,book-store-shard-00-02.gmuzy.mongodb.net:27017/?ssl=true&replicaSet=atlas-zoujtp-shard-0&authSource=admin&retryWrites=true&w=majority&appName=book-store';
-
-
+export const PORT = process.env.PORT;
+export const mongoDBURL = process.env.mongoDBURL;
